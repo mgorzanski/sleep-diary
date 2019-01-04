@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToolbarAndroid, View, Text } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createStackContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -8,23 +8,22 @@ import HomeScreen from './screens/Home';
 import StatisticsScreen from './screens/Statistics';
 import MoreScreen from './screens/More';
 
-class App extends React.Component {
-  render() {
-    return (
-      <View>
-        <ToolbarAndroid
-          title="Sleep Diary"
-        />
-        <TabNavigator />
-      </View>
-    );
-  }
-}
+const HomeStack = createStackNavigator({
+  Home: HomeScreen
+});
+
+const StatisticsStack = createStackNavigator({
+  Statistics: StatisticsScreen
+});
+
+const MoreStack = createStackNavigator({
+  More: MoreScreen
+});
 
 const TabNavigator = createMaterialBottomTabNavigator({
-  Home: HomeScreen,
-  Statistics: StatisticsScreen,
-  More: MoreScreen
+  Home: HomeStack,
+  Statistics: StatisticsStack,
+  More: MoreStack
 }, {
   defaultNavigationOptions: ({ navigation }) => ({
     tabBarIcon: ({focused, horizontal, tintColor }) => {
@@ -40,7 +39,8 @@ const TabNavigator = createMaterialBottomTabNavigator({
       }
 
       return <IconComponent name={iconName} size={25} color={tintColor} />;
-    }
+    },
+    barStyle: { backgroundColor: '#3161a3' }
   })
 });
 
