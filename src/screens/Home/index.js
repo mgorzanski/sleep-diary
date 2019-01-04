@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { material, robotoWeights, materialColors } from 'react-native-typography';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryScatter } from "victory-native";
 
 import * as colors from './../../styles/colors';
+import TextButton from './../../components/TextButton';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -21,10 +23,28 @@ export default class HomeScreen extends React.Component {
           <Text style={styles.historyText}>History</Text>
           <MaterialCommunityIcons name="arrow-right-drop-circle-outline" size={25} />
         </View>
+        <View style={styles.chart}>
+          <VictoryChart height={200} theme={VictoryTheme.material}>
+            <VictoryLine interpolation="linear" data={data} style={{ data: { stroke: '#c43a31' } }} />
+            <VictoryScatter data={data} size={5} style={{ data: { fill: "#c43a31" } }} />
+          </VictoryChart>
+          <TextButton onPress={() => this.props.navigation.navigate('Statistics')}
+          title="GO TO STATISTICS"
+            />
+        </View>
       </View>
     );
   }
 }
+
+const data = [
+  { x: 0, y: 0 },
+  { x: 1, y: 2 },
+  { x: 2, y: 1 },
+  { x: 3, y: 4 },
+  { x: 4, y: 3 },
+  { x: 5, y: 5 }
+];
 
 const styles = StyleSheet.create({
   container: {
@@ -43,5 +63,8 @@ const styles = StyleSheet.create({
     ...material.titleObject,
     ...robotoWeights.regular,
     color: materialColors.blackSecondary
-  }
+  },
+  chart: {
+		marginTop: -35
+	}
 });
