@@ -1,15 +1,24 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { material, robotoWeights, materialColors } from 'react-native-typography';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryScatter } from "victory-native";
+import React from "react";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
+import {
+  material,
+  robotoWeights,
+  materialColors
+} from "react-native-typography";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {
+  VictoryLine,
+  VictoryChart,
+  VictoryTheme,
+  VictoryScatter
+} from "victory-native";
 
-import * as colors from './../../styles/colors';
-import TextButton from './../../components/TextButton';
+import * as colors from "./../../styles/colors";
+import TextButton from "./../../components/TextButton";
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Sleep Diary',
+    title: "Sleep Diary",
     headerStyle: {
       backgroundColor: colors.headerBarBackgroundColor
     }
@@ -18,21 +27,40 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor={colors.statusBarColor}
+          barStyle="light-content"
+        />
         <View style={styles.history}>
-          <MaterialCommunityIcons name="arrow-left-drop-circle-outline" size={25} />
+          <MaterialCommunityIcons
+            name="arrow-left-drop-circle-outline"
+            size={25}
+          />
           <Text style={styles.historyText}>History</Text>
-          <MaterialCommunityIcons name="arrow-right-drop-circle-outline" size={25} />
+          <MaterialCommunityIcons
+            name="arrow-right-drop-circle-outline"
+            size={25}
+          />
         </View>
         <View style={styles.chart}>
           <VictoryChart height={200} theme={VictoryTheme.material}>
-            <VictoryLine interpolation="linear" data={data} style={{ data: { stroke: '#c43a31' } }} />
-            <VictoryScatter data={data} size={5} style={{ data: { fill: "#c43a31" } }} />
-          </VictoryChart>
-          <TextButton onPress={() => this.props.navigation.navigate('Statistics')}
-          title="GO TO STATISTICS"
-          textColor={colors.textButtonColor}
-          underlayColor={colors.textButtonUnderlayColor}
+            <VictoryLine
+              interpolation="linear"
+              data={data}
+              style={{ data: { stroke: "#c43a31" } }}
             />
+            <VictoryScatter
+              data={data}
+              size={5}
+              style={{ data: { fill: "#c43a31" } }}
+            />
+          </VictoryChart>
+          <TextButton
+            onPress={() => this.props.navigation.navigate("Statistics")}
+            title="GO TO STATISTICS"
+            textColor={colors.textButtonColor}
+            underlayColor={colors.textButtonUnderlayColor}
+          />
         </View>
       </View>
     );
@@ -55,10 +83,10 @@ const styles = StyleSheet.create({
   },
   history: {
     padding: 5,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottomColor: '#9e9e9e',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderBottomColor: "#9e9e9e",
     borderBottomWidth: 1
   },
   historyText: {
@@ -68,5 +96,5 @@ const styles = StyleSheet.create({
   },
   chart: {
     marginTop: -35
-	}
+  }
 });
