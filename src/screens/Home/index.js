@@ -30,6 +30,8 @@ export default class HomeScreen extends React.Component {
           </VictoryChart>
           <TextButton onPress={() => this.props.navigation.navigate('Statistics')}
           title="GO TO STATISTICS"
+          textColor={colors.textButtonColor}
+          underlayColor={colors.textButtonUnderlayColor}
             />
         </View>
       </View>
@@ -65,6 +67,6 @@ const styles = StyleSheet.create({
     color: materialColors.blackSecondary
   },
   chart: {
-		marginTop: -35
+    marginTop: -35
 	}
 });
