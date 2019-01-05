@@ -12,6 +12,7 @@ import {
   VictoryTheme,
   VictoryScatter
 } from "victory-native";
+import CardView from "react-native-cardview";
 
 import * as colors from "./../../styles/colors";
 import TextButton from "./../../components/TextButton";
@@ -24,37 +25,40 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.history}>
-          <MaterialCommunityIcons
-            name="arrow-left-drop-circle-outline"
-            size={25}
-          />
-          <Text style={styles.historyText}>History</Text>
-          <MaterialCommunityIcons
-            name="arrow-right-drop-circle-outline"
-            size={25}
-          />
-        </View>
-        <View style={styles.chart}>
-          <VictoryChart height={200} theme={VictoryTheme.material}>
-            <VictoryLine
-              interpolation="linear"
-              data={data}
-              style={{ data: { stroke: "#c43a31" } }}
+        <CardView cardElevation={3} cardMaxElevation={3} cornerRadius={5}>
+          <View style={styles.history}>
+            <MaterialCommunityIcons
+              name="arrow-left-drop-circle-outline"
+              size={25}
             />
-            <VictoryScatter
-              data={data}
-              size={5}
-              style={{ data: { fill: "#c43a31" } }}
+            <Text style={styles.historyText}>History</Text>
+            <MaterialCommunityIcons
+              name="arrow-right-drop-circle-outline"
+              size={25}
             />
-          </VictoryChart>
-          <TextButton
-            onPress={() => this.props.navigation.navigate("Statistics")}
-            title="GO TO STATISTICS"
-            textColor={colors.textButtonColor}
-            underlayColor={colors.textButtonUnderlayColor}
-          />
-        </View>
+          </View>
+          <View style={styles.chart}>
+            <VictoryChart height={200} theme={VictoryTheme.material}>
+              <VictoryLine
+                interpolation="linear"
+                data={data}
+                style={{ data: { stroke: "#c43a31" } }}
+              />
+              <VictoryScatter
+                data={data}
+                size={5}
+                style={{ data: { fill: "#c43a31" } }}
+              />
+            </VictoryChart>
+            <TextButton
+              onPress={() => this.props.navigation.navigate("Statistics")}
+              title="GO TO STATISTICS"
+              textColor={colors.textButtonColor}
+              underlayColor={colors.textButtonUnderlayColor}
+              style={styles.textButton}
+            />
+          </View>
+        </CardView>
       </View>
     );
   }
@@ -72,7 +76,8 @@ const data = [
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.backgroundColor,
-    flex: 1
+    flex: 1,
+    margin: 10
   },
   history: {
     padding: 5,
@@ -89,5 +94,9 @@ const styles = StyleSheet.create({
   },
   chart: {
     marginTop: -35
+  },
+  textButton: {
+    marginLeft:8,
+    marginBottom:8
   }
 });

@@ -19,8 +19,10 @@ export default class TextButton extends React.Component {
       }
     });
 
+    const textButton = StyleSheet.flatten([styles.container, this.props.style]);
+
     return (
-      <TouchableHighlight onPress={this.props.onPress} underlayColor={this.props.underlayColor} style={styles.container}>
+      <TouchableHighlight onPress={this.props.onPress} underlayColor={this.props.underlayColor} style={textButton}>
         <View>
           <Text style={styles.text}>{this.props.title}</Text>
         </View>
