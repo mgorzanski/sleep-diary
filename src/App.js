@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from 'react-native';
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -7,6 +8,8 @@ import HomeScreen from "./screens/Home";
 import StatisticsScreen from "./screens/Statistics";
 import MoreScreen from "./screens/More";
 import * as colors from './styles/colors';
+
+StatusBar.setBackgroundColor(colors.statusBarColorWithoutHeaderBar);
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
@@ -41,6 +44,12 @@ const TabNavigator = createMaterialBottomTabNavigator(
         }
 
         return <IconComponent name={iconName} size={25} color={tintColor} />;
+      },
+      tabBarOnPress: ({ navigation, defaultHandler }) => {
+        const { routeName } = navigation.state;
+        if (routeName === 'More') StatusBar.setBackgroundColor(colors.statusBarColor);
+        else StatusBar.setBackgroundColor(colors.statusBarColorWithoutHeaderBar);
+        defaultHandler();
       },
       barStyle: { backgroundColor: colors.bottomBarBackgroundColor }
     })

@@ -4,11 +4,12 @@ export const primaryColorLight = '#678ed5';
 export const secondaryColor = '#7efaff';
 export const secondaryColorDark = '#43c7cc';
 export const secondaryColorLight = '#b5ffff';
+export const backgroundColor = '#fff';
 
 export const headerBarBackgroundColor = primaryColor;
 export const headerBarTextColor = '#fff';
 export const bottomBarBackgroundColor = primaryColor;
 export const statusBarColor = primaryColorDark;
-export const containerBackgroundColor = '#ebfffb';
+export const statusBarColorWithoutHeaderBar = '#cccccc'
 export const textButtonColor = primaryColor;
 export const textButtonUnderlayColor = secondaryColor;

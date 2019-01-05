@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import {
   material,
   robotoWeights,
@@ -24,10 +24,6 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar
-          backgroundColor={colors.statusBarColor}
-          barStyle="light-content"
-        />
         <View style={styles.history}>
           <MaterialCommunityIcons
             name="arrow-left-drop-circle-outline"
@@ -75,7 +71,7 @@ const data = [
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.containerBackgroundColor,
+    backgroundColor: colors.backgroundColor,
     flex: 1
   },
   history: {
