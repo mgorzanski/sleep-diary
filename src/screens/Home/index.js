@@ -18,10 +18,7 @@ import TextButton from "./../../components/TextButton";
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: "Sleep Diary",
-    headerStyle: {
-      backgroundColor: colors.headerBarBackgroundColor
-    }
+    header: null
   };
 
   render() {

@@ -6,6 +6,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import HomeScreen from "./screens/Home";
 import StatisticsScreen from "./screens/Statistics";
 import MoreScreen from "./screens/More";
+import * as colors from './styles/colors';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
@@ -41,7 +42,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
 
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
-      barStyle: { backgroundColor: "#3161a3" }
+      barStyle: { backgroundColor: colors.bottomBarBackgroundColor }
     })
   }
 );
