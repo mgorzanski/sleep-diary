@@ -15,6 +15,7 @@ import {
 import CardView from "react-native-cardview";
 
 import * as colors from "./../../styles/colors";
+import card from "./../../styles/card";
 import TextButton from "./../../components/TextButton";
 
 export default class HomeScreen extends React.Component {
@@ -58,6 +59,11 @@ export default class HomeScreen extends React.Component {
               style={styles.textButton}
             />
           </View>
+        </CardView>
+        <View style={{ marginTop: 15 }}></View>
+        <CardView cardElevation={3} cardMaxElevation={3} cornerRadius={5}>
+          <Text style={card.title}>New entry</Text>
+          
         </CardView>
       </View>
     );

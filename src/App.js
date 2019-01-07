@@ -7,6 +7,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import HomeScreen from "./screens/Home";
 import StatisticsScreen from "./screens/Statistics";
 import MoreScreen from "./screens/More";
+import DailyReminderScreen from "./screens/More/DailyReminder";
 import * as colors from "./styles/colors";
 
 StatusBar.setBackgroundColor(colors.statusBarColorWithoutHeaderBar);
@@ -20,7 +21,8 @@ const StatisticsStack = createStackNavigator({
 });
 
 const MoreStack = createStackNavigator({
-  More: MoreScreen
+  More: MoreScreen,
+  DailyReminder: DailyReminderScreen
 });
 
 const TabNavigator = createMaterialBottomTabNavigator(
